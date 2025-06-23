@@ -1,0 +1,147 @@
+{
+  "test_results": [
+    {
+      "test_id": 1,
+      "test_name": "Valid Login - Standard User",
+      "category": "positive",
+      "username": "testuser@example.com",
+      "expected_result": "success",
+      "actual_result": "success",
+      "status": "PASS",
+      "execution_time": 0.52,
+      "risk_level": "low",
+      "ai_confidence": 0.95,
+      "timestamp": "2025-06-23T20:34:22.467585"
+    },
+    {
+      "test_id": 2,
+      "test_name": "Invalid Login - Wrong Password",
+      "category": "negative",
+      "username": "testuser@example.com",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 0.521,
+      "risk_level": "medium",
+      "ai_confidence": 0.95,
+      "timestamp": "2025-06-23T20:34:22.988542"
+    },
+    {
+      "test_id": 3,
+      "test_name": "Invalid Login - Wrong Username",
+      "category": "negative",
+      "username": "wronguser@example.com",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 0.522,
+      "risk_level": "medium",
+      "ai_confidence": 0.95,
+      "timestamp": "2025-06-23T20:34:23.510517"
+    },
+    {
+      "test_id": 4,
+      "test_name": "Security Test - SQL Injection",
+      "category": "security",
+      "username": "admin' OR '1'='1' --",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 0.521,
+      "risk_level": "critical",
+      "ai_confidence": 1.0,
+      "timestamp": "2025-06-23T20:34:24.031511"
+    },
+    {
+      "test_id": 5,
+      "test_name": "Edge Case - Empty Fields",
+      "category": "edge_case",
+      "username": "",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 0.501,
+      "risk_level": "low",
+      "ai_confidence": 0.9,
+      "timestamp": "2025-06-23T20:34:24.532506"
+    },
+    {
+      "test_id": 6,
+      "test_name": "Edge Case - Very Long Input",
+      "category": "edge_case",
+      "username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa...",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 1.513,
+      "risk_level": "medium",
+      "ai_confidence": 0.9,
+      "timestamp": "2025-06-23T20:34:26.045556"
+    }
+  ],
+  "analytics": {
+    "summary": {
+      "total_tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_execution_time": 0.683,
+      "total_execution_time": 4.1
+    },
+    "category_breakdown": {
+      "positive": {
+        "total": 1,
+        "passed": 1
+      },
+      "negative": {
+        "total": 2,
+        "passed": 2
+      },
+      "security": {
+        "total": 1,
+        "passed": 1
+      },
+      "edge_case": {
+        "total": 2,
+        "passed": 2
+      }
+    },
+    "risk_analysis": {
+      "low": {
+        "total": 2,
+        "passed": 2
+      },
+      "medium": {
+        "total": 3,
+        "passed": 3
+      },
+      "critical": {
+        "total": 1,
+        "passed": 1
+      }
+    },
+    "ai_insights": [
+      "\ud83c\udfaf Perfect execution - All test scenarios handled correctly",
+      "\ud83d\udd12 Security tests passed - Strong input validation",
+      "\u26a1 Excellent response times - Optimized performance"
+    ],
+    "recommendations": [
+      "Implement continuous testing for regression prevention",
+      "Add more edge cases for comprehensive coverage",
+      "Monitor security test results regularly",
+      "Consider load testing for performance validation"
+    ],
+    "test_coverage_achieved": [
+      "\u2705 Basic authentication flows",
+      "\u2705 Input validation testing",
+      "\u2705 Security vulnerability scanning",
+      "\u2705 Edge case handling",
+      "\u2705 Error response validation"
+    ]
+  },
+  "execution_summary": {
+    "total_time": 4.1,
+    "tests_executed": 6,
+    "timestamp": "2025-06-23T20:34:26.045824"
+  }
+}
