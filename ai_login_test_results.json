@@ -1,0 +1,104 @@
+{
+  "results": [
+    {
+      "test_name": "Valid Login - Correct Credentials",
+      "description": "Test successful login with valid credentials",
+      "username": "tomsmith",
+      "password": "SuperSecretPassword!",
+      "expected_result": "success",
+      "actual_result": "success",
+      "status": "PASS",
+      "execution_time": 38.35,
+      "error_message": null,
+      "screenshot_taken": false,
+      "timestamp": "2025-06-23T20:59:39.921143"
+    },
+    {
+      "test_name": "Invalid Login - Wrong Username",
+      "description": "Test login failure with incorrect username",
+      "username": "wronguser",
+      "password": "SuperSecretPassword!",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 33.8,
+      "error_message": "Your username is invalid!\n\u00d7",
+      "screenshot_taken": false,
+      "timestamp": "2025-06-23T21:00:19.275459"
+    },
+    {
+      "test_name": "Invalid Login - Wrong Password",
+      "description": "Test login failure with incorrect password",
+      "username": "tomsmith",
+      "password": "wrongpassword",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 33.64,
+      "error_message": "Your password is invalid!\n\u00d7",
+      "screenshot_taken": false,
+      "timestamp": "2025-06-23T21:00:54.072461"
+    },
+    {
+      "test_name": "Invalid Login - Empty Credentials",
+      "description": "Test login failure with empty credentials",
+      "username": "",
+      "password": "",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 33.59,
+      "error_message": "Your username is invalid!\n\u00d7",
+      "screenshot_taken": false,
+      "timestamp": "2025-06-23T21:01:28.713513"
+    },
+    {
+      "test_name": "Invalid Login - SQL Injection Attempt",
+      "description": "Test security against SQL injection",
+      "username": "admin' OR '1'='1",
+      "password": "password",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 33.82,
+      "error_message": "Your username is invalid!\n\u00d7",
+      "screenshot_taken": false,
+      "timestamp": "2025-06-23T21:02:03.304469"
+    },
+    {
+      "test_name": "Invalid Login - Special Characters",
+      "description": "Test handling of special characters",
+      "username": "user@#$%",
+      "password": "pass@#$%",
+      "expected_result": "failure",
+      "actual_result": "failure",
+      "status": "PASS",
+      "execution_time": 34.18,
+      "error_message": "Your username is invalid!\n\u00d7",
+      "screenshot_taken": false,
+      "timestamp": "2025-06-23T21:02:38.123483"
+    }
+  ],
+  "analytics": {
+    "total_tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "errors": 0,
+    "success_rate": 100.0,
+    "avg_execution_time": 34.56,
+    "total_time": 213.38,
+    "insights": [
+      "\ud83c\udfaf Perfect test execution - all scenarios handled correctly",
+      "\ud83d\udc0c Consider optimizing test execution speed",
+      "\ud83d\udd12 Security tests passed - application shows good input validation"
+    ],
+    "test_coverage_areas": [
+      "Authentication validation",
+      "Input sanitization",
+      "Error handling",
+      "Security testing",
+      "Edge case handling"
+    ]
+  },
+  "total_execution_time": 213.38
+}
