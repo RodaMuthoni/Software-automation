@@ -345,6 +345,106 @@ class SimulatedAILoginTester:
         except Exception as e:
             print(f"❌ Export failed: {e}")
             return None
+    
+
+    def generate_html_report(self, results, filename="ai_login_test_report.html"):
+        """Generate an HTML report for browser display"""
+        try:
+            summary = results["analytics"]["summary"]
+            test_results = results["test_results"]
+            insights = results["analytics"]["ai_insights"]
+
+            html = f"""
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>AI Login Test Report</title>
+                <style>
+                    body {{ font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }}
+                    h1, h2 {{ color: #2c3e50; }}
+                    table {{ border-collapse: collapse; width: 100%; margin-top: 20px; }}
+                    th, td {{ border: 1px solid #ccc; padding: 10px; text-align: left; }}
+                    th {{ background-color: #2c3e50; color: #fff; }}
+                    tr:nth-child(even) {{ background-color: #f2f2f2; }}
+                    .pass {{ color: green; font-weight: bold; }}
+                    .fail {{ color: red; font-weight: bold; }}
+                    .meta {{ margin-top: 10px; }}
+                </style>
+            </head>
+            <body>
+                <h1>🤖 AI Login Test Report</h1>
+                <p class="meta">Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+
+                <h2>📊 Summary</h2>
+                <ul>
+                    <li><strong>Total Tests:</strong> {summary['total_tests']}</li>
+                    <li><strong>Passed:</strong> {summary['passed']}</li>
+                    <li><strong>Failed:</strong> {summary['failed']}</li>
+                    <li><strong>Success Rate:</strong> {summary['success_rate']}%</li>
+                    <li><strong>Total Time:</strong> {summary['total_execution_time']}s</li>
+                </ul>
+
+                <h2>🧠 AI Insights</h2>
+                <ul>
+            """
+            for insight in insights:
+                html += f"<li>{insight}</li>\n"
+
+            html += """
+                </ul>
+
+                <h2>📋 Test Results</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Expected</th>
+                            <th>Actual</th>
+                            <th>Status</th>
+                            <th>Category</th>
+                            <th>Risk</th>
+                            <th>Time (s)</th>
+                            <th>Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            """
+
+            for result in test_results:
+                status_class = "pass" if result["status"] == "PASS" else "fail"
+                html += f"""
+                    <tr>
+                        <td>{result['test_id']}</td>
+                        <td>{result['test_name']}</td>
+                        <td>{result['expected_result']}</td>
+                        <td>{result['actual_result']}</td>
+                        <td class="{status_class}">{result['status']}</td>
+                        <td>{result['category']}</td>
+                        <td>{result['risk_level']}</td>
+                        <td>{result['execution_time']}</td>
+                        <td>{result['ai_confidence']:.2f}</td>
+                    </tr>
+                """
+
+            html += """
+                    </tbody>
+                </table>
+            </body>
+            </html>
+            """
+
+            with open(filename, "w") as f:
+                f.write(html)
+
+            print(f"\n🌐 HTML report generated: {filename}")
+            return filename
+
+        except Exception as e:
+            print(f"❌ Failed to generate HTML report: {e}")
+            return None
+
 
 def main():
     """Main execution function"""
@@ -363,6 +463,9 @@ def main():
         
         # Export results
         tester.export_results(results)
+
+        tester.generate_html_report(results)
+
         
         # Final summary
         success_rate = results["analytics"]["summary"]["success_rate"]
